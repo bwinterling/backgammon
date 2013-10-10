@@ -62,11 +62,11 @@ class Board
   end
 
   def update_gutter(color)
-    gutter[color] += 1 
+    gutter[color] += 1
   end
 
   def black_all_home?
-    black_non_home_count == 0 
+    black_non_home_count == 0
   end
 
   def black_non_home_count
