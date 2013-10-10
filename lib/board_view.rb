@@ -12,7 +12,7 @@ class BoardView
       :low    => 45,
       :med    => 30,
       :high   => 20,
-      :gutter => 10
+      :gutter => 12
     }
   end
 
@@ -30,15 +30,15 @@ class BoardView
   end
 
   def draw_gutters
-    draw_gutter_white(board.gutter[:white], 838, 670)
-    draw_gutter_black(board.gutter[:black], 838, 130)
+    draw_gutter_white(board.gutter[:white], 835, 600)
+    draw_gutter_black(board.gutter[:black], 835, 176)
   end
 
   def draw_gutter_white(count, x, y)
     y_new = y
     count.times do
       draw_white_gutter(x,y_new)
-      y_new -= offset[:gutter]
+      y_new -= checker_offset[:gutter]
     end
   end
 
@@ -46,7 +46,7 @@ class BoardView
     y_new = y
     count.times do
       draw_black_gutter(x,y_new)
-      y_new += offset[:gutter]
+      y_new += checker_offset[:gutter]
     end
   end
 
