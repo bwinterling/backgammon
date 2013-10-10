@@ -21,6 +21,7 @@ class BoardView
     draw_points
     draw_bar
     draw_gutters
+    draw_dice
     #draw_shadow
   end
 
@@ -53,6 +54,11 @@ class BoardView
   def draw_bar
     draw_top_point_white(board.bar[:white], 475, 200)
     draw_bottom_point_black(board.bar[:black], 475, 550)
+  end
+
+  def draw_dice
+    dice = app.load_image('./resources/images/dice.png', 'png')
+    app.image(dice, 475, 355)
   end
 
   def draw_points
