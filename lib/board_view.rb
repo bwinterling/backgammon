@@ -7,6 +7,15 @@ class BoardView
     @board = board
   end
 
+  def checker_offset
+    {
+      :low    => 45,
+      :med    => 30,
+      :high   => 20,
+      :gutter => 10
+    }
+  end
+
   def render
     draw_background
     draw_points
@@ -14,21 +23,14 @@ class BoardView
     draw_gutters
   end
 
-  def draw_backgroud
-    #add background image
-  end
-
-  def draw_white_checker(x,y)
-  end
-
-  def draw_black_checker(x,y)
+  def draw_background
+    bg = app.load_image('./resources/images/game-bg.png', 'png')
+    app.image(bg, 0, 0)
   end
 
   def draw_gutters
-    white_count = board.gutter[:white]
-    black_count = board.gutter[:black]
-    draw_gutter_white(white_count, 838, 130)
-    draw_gutter_black(black_count, 838, 670)
+    draw_gutter_white(board.gutter[:white], 838, 130)
+    draw_gutter_black(board.gutter[:black], 838, 670)
   end
 
   def draw_gutter_white(count, x, y)
@@ -38,10 +40,8 @@ class BoardView
   end
 
   def draw_bar
-    white_count = board.bar[:white]
-    black_count = board.bar[:black]
-    draw_top_point_white(white_count, 475, 200)
-    draw_bottom_point_black(black_count, 475, 650)
+    draw_top_point_white(board.bar[:white], 475, 200)
+    draw_bottom_point_black(board.bar[:black], 475, 550)
   end
 
   def draw_points
@@ -60,87 +60,81 @@ class BoardView
     end
   end
 
-  def draw_top_point_white(white_count, x, y)
-    if white_count < 4
-      offset = 55
-      y_new = y.dup
-      white_count.times do
-        draw_white_checker(x,y_new)
-        y_new += offset
-      end
-    else
-      offset = 20
-      y_new = y.dup
-      white_count.times do
-        draw_white_checker(x,y_new)
-        y_new += offset
-      end
-    end
-  end
-
-  def draw_top_point_black(black_count, x, y)
-    if black_count < 4
-      offset = 55
-      y_new = y.dup
-      black_count.times do
-        draw_black_checker(x,y_new)
-        y_new += offset
-      end
-    else
-      offset = 20
-      y_new = y.dup
-      black_count.times do
-        draw_black_checker(x,y_new)
-        y_new += offset
-      end
-    end
-  end
-
   def draw_bottom_row_of_points
     (13..24).each do |i|
       white_count = board.points[i][:white]
       black_count = board.points[i][:black]
       x = grid[i][:xmin]
-      y = grid[i][:ymax - 50]
+      y = grid[i][:ymax] - 50
       draw_bottom_point_white(white_count, x, y)
       draw_bottom_point_black(black_count, x, y)
     end
   end
 
+  def draw_top_point_white(white_count, x, y)
+    if white_count < 4
+      draw_whites(checker_offset[:low], white_count, x, y)
+    elsif white_count > 10
+      draw_whites(checker_offset[:high], white_count, x, y)
+    else
+      draw_whites(checker_offset[:med], white_count, x, y)
+    end
+  end
+
+  def draw_top_point_black(black_count, x, y)
+    if black_count < 4
+      draw_blacks(checker_offset[:low], black_count, x, y)
+    elsif black_count > 10
+      draw_blacks(checker_offset[:high], black_count, x, y)
+    else
+      draw_blacks(checker_offset[:med], black_count, x, y)
+    end
+  end
+
   def draw_bottom_point_white(white_count, x, y)
     if white_count < 4
-      offset = 55
-      y_new = y.dup
-      white_count.times do
-        draw_white_checker(x,y_new)
-        y_new -= offset
-      end
+      draw_whites(-checker_offset[:low], white_count, x, y)
+    elsif white_count > 10
+      draw_whites(-checker_offset[:high], white_count, x, y)
     else
-      offset = 20
-      y_new = y.dup
-      white_count.times do
-        draw_white_checker(x,y_new)
-        y_new -= offset
-      end
+      draw_whites(-checker_offset[:med], white_count, x, y)
     end
   end
 
   def draw_bottom_point_black(black_count, x, y)
     if black_count < 4
-      offset = 55
-      y_new = y.dup
-      black_count.times do
-        draw_black_checker(x,y_new)
-        y_new -= offset
-      end
+      draw_blacks(-checker_offset[:low], black_count, x, y)
+    elsif black_count > 10
+      draw_blacks(-checker_offset[:high], black_count, x, y)
     else
-      offset = 20
-      y_new = y.dup
-      black_count.times do
-        draw_black_checker(x,y_new)
-        y_new -= offset
-      end
+      draw_blacks(-checker_offset[:med], black_count, x, y)
     end
+  end
+
+  def draw_whites(offset, count, x, y)
+    y_new = y
+    count.times do
+      draw_white_checker(x,y_new)
+      y_new += offset
+    end
+  end
+
+  def draw_blacks(offset, count, x, y)
+    y_new = y
+    count.times do
+      draw_black_checker(x,y_new)
+      y_new += offset
+    end
+  end
+
+  def draw_white_checker(x,y)
+    checker = app.load_image('./resources/images/piece-white.png', 'png')
+    app.image(checker, x, y)
+  end
+
+  def draw_black_checker(x,y)
+    checker = app.load_image('./resources/images/piece-brown.png', 'png')
+    app.image(checker, x, y)
   end
 
   def grid

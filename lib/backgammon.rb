@@ -8,7 +8,7 @@ class Backgammon < Processing::App
 
   def setup
     @board = Board.new
-    @board_view = BoardView.new
+    @board_view = BoardView.new(self, board)
   end
 
   def draw
