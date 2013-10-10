@@ -30,7 +30,7 @@ class BoardView
   end
 
   def draw_gutters
-    draw_gutter_white(board.gutter[:white], 835, 600)
+    draw_gutter_white(board.gutter[:white], 835, 603)
     draw_gutter_black(board.gutter[:black], 835, 176)
   end
 
@@ -160,34 +160,35 @@ class BoardView
 
   def grid
     {
-      :g3 => {:xmin => 100, :xmax => 174, :ymin => 100, :ymax => 700},
-      :g2 => {:xmin => 825, :xmax => 900, :ymin => 400, :ymax => 700},
-      :g1 => {:xmin => 825, :xmax => 900, :ymin => 100, :ymax => 399},
-      :bar => {:xmin => 475, :xmax => 524, :ymin => 100, :ymax => 700},
-      1 => {:xmin => 775, :xmax => 824, :ymin => 100, :ymax => 399},
-      2 => {:xmin => 725, :xmax => 774, :ymin => 100, :ymax => 399},
-      3 => {:xmin => 675, :xmax => 724, :ymin => 100, :ymax => 399},
-      4 => {:xmin => 625, :xmax => 674, :ymin => 100, :ymax => 399},
-      5 => {:xmin => 575, :xmax => 624, :ymin => 100, :ymax => 399},
-      6 => {:xmin => 525, :xmax => 574, :ymin => 100, :ymax => 399},
-      7 => {:xmin => 425, :xmax => 524, :ymin => 100, :ymax => 399},
-      8 => {:xmin => 375, :xmax => 424, :ymin => 100, :ymax => 399},
-      9 => {:xmin => 325, :xmax => 374, :ymin => 100, :ymax => 399},
-      10 => {:xmin => 275, :xmax => 324, :ymin => 100, :ymax => 399},
-      11 => {:xmin => 225, :xmax => 274, :ymin => 100, :ymax => 399},
-      12 => {:xmin => 175, :xmax => 224, :ymin => 100, :ymax => 399},
-      13 => {:xmin => 175, :xmax => 224, :ymin => 400, :ymax => 700},
-      14 => {:xmin => 225, :xmax => 274, :ymin => 400, :ymax => 700},
-      15 => {:xmin => 275, :xmax => 324, :ymin => 400, :ymax => 700},
-      16 => {:xmin => 325, :xmax => 374, :ymin => 400, :ymax => 700},
-      17 => {:xmin => 375, :xmax => 424, :ymin => 400, :ymax => 700},
-      18 => {:xmin => 425, :xmax => 524, :ymin => 400, :ymax => 700},
-      19 => {:xmin => 525, :xmax => 574, :ymin => 400, :ymax => 700},
-      20 => {:xmin => 575, :xmax => 624, :ymin => 400, :ymax => 700},
-      21 => {:xmin => 625, :xmax => 674, :ymin => 400, :ymax => 700},
-      22 => {:xmin => 675, :xmax => 724, :ymin => 400, :ymax => 700},
-      23 => {:xmin => 725, :xmax => 774, :ymin => 400, :ymax => 700},
-      24 => {:xmin => 775, :xmax => 824, :ymin => 400, :ymax => 700}
+      :roll => {:xmin => 475, :xmax => 524, :ymin => 372, :ymax => 430},
+      :g3   => {:xmin => 100, :xmax => 174, :ymin => 100, :ymax => 700},
+      :g2   => {:xmin => 825, :xmax => 900, :ymin => 400, :ymax => 700},
+      :g1   => {:xmin => 825, :xmax => 900, :ymin => 100, :ymax => 399},
+      :bar  => {:xmin => 475, :xmax => 524, :ymin => 100, :ymax => 700},
+      1     => {:xmin => 775, :xmax => 824, :ymin => 100, :ymax => 399},
+      2     => {:xmin => 725, :xmax => 774, :ymin => 100, :ymax => 399},
+      3     => {:xmin => 675, :xmax => 724, :ymin => 100, :ymax => 399},
+      4     => {:xmin => 625, :xmax => 674, :ymin => 100, :ymax => 399},
+      5     => {:xmin => 575, :xmax => 624, :ymin => 100, :ymax => 399},
+      6     => {:xmin => 525, :xmax => 574, :ymin => 100, :ymax => 399},
+      7     => {:xmin => 425, :xmax => 524, :ymin => 100, :ymax => 399},
+      8     => {:xmin => 375, :xmax => 424, :ymin => 100, :ymax => 399},
+      9     => {:xmin => 325, :xmax => 374, :ymin => 100, :ymax => 399},
+      10    => {:xmin => 275, :xmax => 324, :ymin => 100, :ymax => 399},
+      11    => {:xmin => 225, :xmax => 274, :ymin => 100, :ymax => 399},
+      12    => {:xmin => 175, :xmax => 224, :ymin => 100, :ymax => 399},
+      13    => {:xmin => 175, :xmax => 224, :ymin => 400, :ymax => 700},
+      14    => {:xmin => 225, :xmax => 274, :ymin => 400, :ymax => 700},
+      15    => {:xmin => 275, :xmax => 324, :ymin => 400, :ymax => 700},
+      16    => {:xmin => 325, :xmax => 374, :ymin => 400, :ymax => 700},
+      17    => {:xmin => 375, :xmax => 424, :ymin => 400, :ymax => 700},
+      18    => {:xmin => 425, :xmax => 524, :ymin => 400, :ymax => 700},
+      19    => {:xmin => 525, :xmax => 574, :ymin => 400, :ymax => 700},
+      20    => {:xmin => 575, :xmax => 624, :ymin => 400, :ymax => 700},
+      21    => {:xmin => 625, :xmax => 674, :ymin => 400, :ymax => 700},
+      22    => {:xmin => 675, :xmax => 724, :ymin => 400, :ymax => 700},
+      23    => {:xmin => 725, :xmax => 774, :ymin => 400, :ymax => 700},
+      24    => {:xmin => 775, :xmax => 824, :ymin => 400, :ymax => 700}
     }
   end
 

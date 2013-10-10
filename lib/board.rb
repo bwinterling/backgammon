@@ -42,7 +42,7 @@ class Board
   end
 
   def default_gutter
-    { :black => 8, :white => 4 }
+    { :black => 0, :white => 0 }
   end
 
   def reset
