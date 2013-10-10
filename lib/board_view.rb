@@ -21,6 +21,7 @@ class BoardView
     draw_points
     draw_bar
     draw_gutters
+    #draw_shadow
   end
 
   def draw_background
@@ -29,14 +30,24 @@ class BoardView
   end
 
   def draw_gutters
-    draw_gutter_white(board.gutter[:white], 838, 130)
-    draw_gutter_black(board.gutter[:black], 838, 670)
+    draw_gutter_white(board.gutter[:white], 838, 670)
+    draw_gutter_black(board.gutter[:black], 838, 130)
   end
 
   def draw_gutter_white(count, x, y)
+    y_new = y
+    count.times do
+      draw_white_gutter(x,y_new)
+      y_new -= offset[:gutter]
+    end
   end
 
   def draw_gutter_black(count, x, y)
+    y_new = y
+    count.times do
+      draw_black_gutter(x,y_new)
+      y_new += offset[:gutter]
+    end
   end
 
   def draw_bar
@@ -134,6 +145,16 @@ class BoardView
 
   def draw_black_checker(x,y)
     checker = app.load_image('./resources/images/piece-brown.png', 'png')
+    app.image(checker, x, y)
+  end
+
+  def draw_white_gutter(x, y)
+    checker = app.load_image('./resources/images/piece-white-stack.png', 'png')
+    app.image(checker, x, y)
+  end
+
+  def draw_black_gutter(x,y)
+    checker = app.load_image('./resources/images/piece-brown-stack.png', 'png')
     app.image(checker, x, y)
   end
 
