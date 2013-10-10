@@ -30,8 +30,8 @@ class BoardView
   end
 
   def draw_gutters
-    draw_gutter_white(board.gutter[:white], 835, 603)
-    draw_gutter_black(board.gutter[:black], 835, 176)
+    draw_gutter_black(board.gutter[:black], 834, 174)
+    draw_gutter_white(board.gutter[:white], 834, 566)
   end
 
   def draw_gutter_white(count, x, y)

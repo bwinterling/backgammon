@@ -38,11 +38,11 @@ class Board
   end
 
   def default_bar
-    { :black => 0, :white => 0 }
+    { :black => 4, :white => 2 }
   end
 
   def default_gutter
-    { :black => 0, :white => 0 }
+    { :black => 5, :white => 10 }
   end
 
   def reset
